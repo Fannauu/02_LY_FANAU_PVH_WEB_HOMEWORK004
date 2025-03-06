@@ -1,16 +1,20 @@
 import { Bell, Search } from "lucide-react";
 import React from "react";
 
-export default function TopNavbarComponent() {
+export default function TopNavbarComponent({setSearch}) {
   // handle on form submit
   const handleSubmit = (e) => {
     // to prevent the page from reload
     e.preventDefault();
   };
 
+  
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
   return (
     <div className="flex justify-between items-center">
-      {/* search bar */}
       <form className="relative w-9/12 " onSubmit={handleSubmit}>
         {/* search button */}
         <button className="cursor-pointer">
@@ -19,6 +23,7 @@ export default function TopNavbarComponent() {
 
         {/* search input */}
         <input
+          onChange={handleSearch}
           type="text"
           placeholder="Search assignment here"
           className="w-full bg-white py-3 pl-14 pr-5 rounded-xl h-12 border-none focus:border-none focus:ring-0 focus:outline-custom-sky-blue"
@@ -33,7 +38,7 @@ export default function TopNavbarComponent() {
       </div>
 
       {/* profile image */}
-      <div className="h-16 rounded-xl w-2/12 bg-white py-2.5 px-3 flex gap-3 items-start">
+      {/* <div className="h-16 rounded-xl w-2/12 bg-white py-2.5 px-3 flex gap-3 items-start">
         <img
           src="https://i.pinimg.com/736x/39/2a/50/392a5042102c7d7e4ed87527a2d7e74a.jpg"
           alt="profile image"
@@ -42,12 +47,12 @@ export default function TopNavbarComponent() {
           className="rounded-full"
         />
 
-        {/* username and email */}
+        username and email
         <div>
           <p className="capitalize text-base">dark moon</p>
           <p className="text-gray-400 text-sm">darkmoon@gmail.com</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,38 +1,70 @@
 import "./App.css";
-import AssignmentsComponent from "./components/AssignmentsComponent";
-import DashboardComponent from "./components/DashboardComponent";
-import LearningMaterialsComponent from "./components/LearningMaterialsComponent";
+import React, { useState } from "react";
 import SidebarComponent from "./components/SidebarComponent";
 import TopNavbarComponent from "./components/TopNavbarComponent";
-
+import DashboardComponent from "./components/DashboardComponent";
+import AssignmentsComponent from "./components/AssignmentsComponent";
+import CardComponent from "./components/CardComponent";
+import AddNewProjectComponent from "./components/AddNewProjectComponent";
+import Profile from "./components/Profile";
+import LearningMaterialsComponent from "./components/LearningMaterialsComponent";
 function App() {
+  const [card, setCard] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handlerSubmit = (project) => {
+    setCard([...card, project]);
+  };
+
+  const filteredCard = card.filter((item) => {
+    return item.projectName.toLowerCase().includes(search.toLowerCase());
+  });
+  console.log("filteredCard", filteredCard);
+  console.log("cardInCardComponent", card);
   return (
     <>
-      <div className="font-rubik text-primary-text bg-light-gray flex h-screen overflow-hidden">
-        {/* sidebar */}
-        <div className="w-1/5">
+      <div className="grid grid-cols-12 bg-light-gray dark:bg-gray-800">
+        <div className="col-span-2  h-screen">
           <SidebarComponent />
         </div>
 
-        {/* top navigation bar */}
-        <div className="w-4/5 p-12">
-          <TopNavbarComponent />
+        <div className="col-span-8 flex flex-col p-10">
+          <TopNavbarComponent setSearch={setSearch} />
+          <div className="w-full py-10 flex justify-between">
+            <DashboardComponent />
+          </div>
 
-          {/* dashboard summary */}
-          <div className="flex justify-between">
-            <div className="w-9/12 mt-5 space-y-5">
-              <DashboardComponent />
+
+          <div className="flex justify-between items-center ">
+            <div>
               <AssignmentsComponent />
             </div>
-
-            <div className="w-3/12 pl-10 mt-5">
-              <LearningMaterialsComponent />
+            <div className="">
+              <AddNewProjectComponent handlerSubmitProject={handlerSubmit} />
             </div>
+          </div>
+
+          {/* <div className="flex items-center justify-between px-10"></div> */}
+          <div className=" overflow-auto h-[80%]">
+            <CardComponent card={filteredCard} />
+          </div>
+        </div>
+
+        <div className="col-span-2 mt-8">
+          <Profile />
+          <div className="w-full mt-8 px-3">
+            <LearningMaterialsComponent />
           </div>
         </div>
       </div>
     </>
   );
 }
+
+
+
+
+
+
 
 export default App;

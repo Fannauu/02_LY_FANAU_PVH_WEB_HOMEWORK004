@@ -18,6 +18,9 @@ export default function LearningMaterialsComponent() {
     } else {
       return 0;
     }
+
+
+    
   });
 
   // const handlerStar = (id) => {
@@ -40,7 +43,7 @@ export default function LearningMaterialsComponent() {
     });
   }
   return (
-    <div className="bg-white drop-shadow-lg rounded-2xl overflow-auto h-[80vh]">
+    <div className="bg-white drop-shadow-lg rounded-2xl  h-[80vh] overflow-y-auto scrollbar-hidden">
       {/* calling filter component */}
       <FilterComponent setFilter={setFilter} />
 

@@ -6,7 +6,7 @@ export default function DashboardComponent() {
       <div>
         <h2 className="text-xl font-semibold mb-5">Dashboard</h2>
         {/* display summary on each card */}
-        <div className="flex gap-5">
+        <div className="flex gap-5 justify-between">
           {dashboard.map((list) => (
             <div className="flex bg-white gap-5 py-3.5 px-4 rounded-xl w-auto">
               <div className={`p-3 rounded-xl ${list.color}`}>

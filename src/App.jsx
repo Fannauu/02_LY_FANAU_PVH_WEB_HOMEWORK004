@@ -17,23 +17,22 @@ function App() {
   };
 
   const filteredCard = card.filter((item) => {
-    return item.projectName.toLowerCase().includes(search.toLowerCase());
+    return item.projectName.toLowerCase().includes(search.trim().toLowerCase());
   });
   console.log("filteredCard", filteredCard);
   console.log("cardInCardComponent", card);
   return (
     <>
       <div className="grid grid-cols-12 bg-light-gray dark:bg-gray-800">
-        <div className="col-span-2  h-screen">
+        <div className="col-span-2">
           <SidebarComponent />
         </div>
 
         <div className="col-span-8 flex flex-col p-10">
           <TopNavbarComponent setSearch={setSearch} />
-          <div className="w-full py-10 flex justify-between">
+          <div className="w-full py-10 ">
             <DashboardComponent />
           </div>
-
 
           <div className="flex justify-between items-center ">
             <div>
@@ -45,14 +44,14 @@ function App() {
           </div>
 
           {/* <div className="flex items-center justify-between px-10"></div> */}
-          <div className=" overflow-auto h-[80%]">
+          <div className="  h-[19rem] mt-10 overflow-y-auto scrollbar-hidden">
             <CardComponent card={filteredCard} />
           </div>
         </div>
 
-        <div className="col-span-2 mt-8">
+        <div className="col-span-2 mt-8 px-3">
           <Profile />
-          <div className="w-full mt-8 px-3">
+          <div className="w-full mt-8">
             <LearningMaterialsComponent />
           </div>
         </div>

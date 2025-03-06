@@ -16,6 +16,11 @@
   --color-light-gray: #f5f7f8;
   --color-primary-text: #2b343b;
 
+
   /* config custom font */
   --font-rubik: "Rubik", "sans-serif";
+
+   /* Config custom scrollbar */
+  --scrollbar-width: none; /* Firefox */
+  --scrollbar-display: none; /* Webkit browsers */
 }

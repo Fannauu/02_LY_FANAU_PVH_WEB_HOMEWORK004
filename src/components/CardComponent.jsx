@@ -6,26 +6,34 @@ export default function CardComponent({ card }) {
   console.log("cardInCardComponent", card);
 
   const getProgressColor = (progress) => {
-    if (progress >= 100) return "bg-custom-sky-blue text-custom-sky-blue";
+    if (progress == 100) return "bg-custom-sky-blue text-custom-sky-blue";
     if (progress >= 75) return "bg-custom-carrot text-custom-carrot";
     if (progress >= 50) return "bg-custom-yellow text-custom-yellow";
     if (progress >= 25) return "bg-custom-pink text-custom-pink";
     return "bg-gray-300 text-gray-500"; // Default color
   }
 
+    const dueDateColor = (progress) => {
+      if (progress === 100) return " text-custom-sky-blue";
+      if (progress >= 75) return " text-custom-carrot";
+      if (progress >= 50) return " text-custom-yellow";
+      if (progress >= 25) return " text-custom-pink";
+      return " text-gray-500"; 
+    }
 
 
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5  mt-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
       {card.map((item) => (
         <div
           key={item.id}
           className="max-w-sm p-6 bg-white rounded-2xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <div className="flex justify-between mb-5">
             {/* date */}
-            <p
-              className={`text-custom-sky-blue font-medium ${
+            <p className={` font-medium ${dueDateColor(+item.progress)}`}>
+              {/* 
+                className={`text-custom-sky-blue font-medium ${
                 +item.progress === 100
                   ? "text-custom-sky-blue"
                   : +item.progress === 75
@@ -36,6 +44,9 @@ export default function CardComponent({ card }) {
                   ? "text-custom-pink"
                   : ""
               }`}>
+
+              */}
+
               {item.dueDate}
             </p>
             <EllipsisVertical size={20} color="#374957" />

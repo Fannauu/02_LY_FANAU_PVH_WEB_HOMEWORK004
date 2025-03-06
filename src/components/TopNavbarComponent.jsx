@@ -12,6 +12,7 @@ export default function TopNavbarComponent({setSearch}) {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   }
+  // console.log('search value : ', );  
 
   return (
     <div className="flex justify-between items-center">

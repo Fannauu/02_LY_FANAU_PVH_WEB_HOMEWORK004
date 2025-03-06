@@ -20,28 +20,46 @@ export default function AddNewProjectComponent({ handlerSubmitProject }) {
     e.preventDefault();
    
     let newErrror = {};
-    Object.keys(project).forEach((key) => {
-      if (!project[key].trim()) {
-        newErrror[key] = `${key.replace(/([A-Z])/g, "$1")} is required`;
-      }
-    });
+    let updatedProject = { ...project };
 
-    // date
-    if (project.dueDate) {
-      const today = new Date().toISOString().split("T")[0];
-      if (project.dueDate < today) {
-        newErrror.dueDate = "Due date must be greater than today";
-      }
+    if (!updatedProject.description.trim()) {
+      updatedProject.description =
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime inventore quisquam, incidunt ea eius quod cum, ";
     }
 
 
+    Object.keys(updatedProject).forEach((key) => {
+      if (!updatedProject[key].trim()) {
+        newErrror[key] = `${key} is required`;
+      }
+    });
+
+    
+    // date
+    if (updatedProject.dueDate) {
+      const today = new Date().toISOString().split("T")[0];
+      if (updatedProject.dueDate < today) {
+        newErrror.dueDate = "Due date must be greater than today";
+      }
+    }
 
     if (Object.keys(newErrror).length > 0) {
       setErrorMessage(newErrror);
     } else {
       setErrorMessage({});
-      handlerSubmitProject(project);
+      handlerSubmitProject(updatedProject);
+
+      setProject({
+        projectName: "",
+        description: "",
+        dueDate: "",
+        progress: "",
+        // Add other fields as needed
+      }); 
     }
+
+
+    
   };
 
   const handleInput = (e) => {
@@ -130,6 +148,7 @@ export default function AddNewProjectComponent({ handlerSubmitProject }) {
                     Due Date
                   </label>
                   <input
+                    value={project.dueDate}
                     onChange={handleInput}
                     type="date"
                     name="dueDate"
@@ -148,6 +167,7 @@ export default function AddNewProjectComponent({ handlerSubmitProject }) {
                     Progress
                   </label>
                   <select
+                    value={project.progress}
                     onChange={handleInput}
                     name="progress"
                     id="progress"
@@ -169,6 +189,7 @@ export default function AddNewProjectComponent({ handlerSubmitProject }) {
                     Project Description
                   </label>
                   <textarea
+                    value={project.description}
                     onChange={handleInput}
                     id="description"
                     name="description"

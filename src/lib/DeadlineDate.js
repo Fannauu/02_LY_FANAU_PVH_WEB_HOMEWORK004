@@ -11,7 +11,7 @@ const getDaysLeft = (dateString) => {
 
   if (daysLeft > 7) {
     const weeksLeft = Math.floor(daysLeft / 7);
-    return `${weeksLeft} week${weeksLeft > 1 ? "" : ""} left`; // looking for s 
+    return `${weeksLeft} week${weeksLeft > 1 ? "s" : ""} left`; // looking for s 
   }
   if (daysLeft > 1) return `${daysLeft} days left`;
   if (daysLeft === 1) return `1 day left`;

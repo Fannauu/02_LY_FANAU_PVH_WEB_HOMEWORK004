@@ -96,7 +96,7 @@ export default function CardComponent({ card }) {
 
           {/* deadline */}
           <div className="flex justify-end mt-4">
-            <p className="font-medium bg-light-gray py-1.5 px-4 rounded-lg max-w-28 text-center">
+            <p className="font-medium bg-light-gray py-1.5 px-4 rounded-lg max-w-32 text-center">
               {getDaysLeft(item.dueDate)}
             </p>
           </div>

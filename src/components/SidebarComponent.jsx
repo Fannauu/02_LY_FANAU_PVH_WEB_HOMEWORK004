@@ -4,7 +4,7 @@ import { LogOutIcon } from "lucide-react";
 
 export default function SidebarComponent() {
   return (
-    <div className="p-5 h-screen bg-white shadow-xl sticky">
+    <div className=" h-screen bg-white shadow-xl sticky">
       {/* logo */}
       <div className="flex gap-3 items-center p-5 border-b-2 border-b-gray-200">
         <img
@@ -26,8 +26,7 @@ export default function SidebarComponent() {
               key={option?.id}
               className={`${
                 option?.id === 1 && "bg-light-gray"
-              } flex items-start gap-3 py-3 px-5 rounded-xl cursor-pointer  hover:bg-gray-200 `}
-            >
+              } flex items-start gap-3 py-3 px-5 rounded-xl cursor-pointer  hover:bg-gray-200 `}>
               <option.icon className="w-6 h-6 text-primary-text" />{" "}
               <p className="text-lg">{option.label}</p>
             </div>

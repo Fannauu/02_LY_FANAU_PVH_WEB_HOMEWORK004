@@ -28,13 +28,13 @@ function App() {
           <SidebarComponent />
         </div>
 
-        <div className="col-span-8 flex flex-col p-10">
+        <div className="col-span-8 flex flex-col p-10 pb-0">
           <TopNavbarComponent setSearch={setSearch} />
           <div className="w-full py-10 ">
             <DashboardComponent />
           </div>
 
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center">
             <div>
               <AssignmentsComponent />
             </div>
@@ -44,7 +44,7 @@ function App() {
           </div>
 
           {/* <div className="flex items-center justify-between px-10"></div> */}
-          <div className="  h-[19rem] mt-10 overflow-y-auto scrollbar-hidden">
+          <div className=" h-[19rem] mt-10 overflow-y-auto scrollbar-hidden">
             <CardComponent card={filteredCard} />
           </div>
         </div>
@@ -59,11 +59,5 @@ function App() {
     </>
   );
 }
-
-
-
-
-
-
 
 export default App;
